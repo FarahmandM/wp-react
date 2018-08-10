@@ -1,0 +1,32 @@
+{
+  "name": "wp-react",
+  "version": "0.0.0",
+  "description": "Building React app using WordPress REST API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarahmandM/wp-react.git"
+  },
+  "keywords": [
+    "React",
+    "ReactJS",
+    "WP",
+    "WordPress",
+    "API",
+    "WordPress API",
+    "WP API",
+    "REST API",
+    "WordPress REST API",
+    "WP REST API"
+  ],
+  "author": "Farahmand Moslemi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FarahmandM/wp-react/issues"
+  },
+  "homepage": "https://github.com/FarahmandM/wp-react#readme"
+}
