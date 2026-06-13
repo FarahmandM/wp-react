@@ -1,0 +1,1 @@
+export type { WpMenuProps, MenuItem, Menu } from '@models/components/WpMenu';
