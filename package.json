@@ -1,6 +1,6 @@
 {
     "name": "wp-react",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Building React app using WordPress REST API",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
