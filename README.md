@@ -44,8 +44,8 @@ Here is exactly how to set up a project from scratch.
 Create a `.env` file in the root of your React project. This file is used by the `wp-react-cli` tool to test your connection, and acts as a fallback for your React app.
 
 ```env
-REACT_APP_WP_REST_URL=https://demo.wp-api.org/wp-json
-REACT_APP_JWT_AUTH_URL=https://demo.wp-api.org/wp-json/jwt-auth/v1/token
+REACT_APP_WP_REST_URL=https://YOUR_WEBSITE/wp-json
+REACT_APP_JWT_AUTH_URL=https://YOUR_WEBSITE/wp-json/jwt-auth/v1/token
 ```
 
 ### Step 2: Wrap your App with Providers
@@ -118,7 +118,7 @@ Rely on the `.env` file. The CLI works out of the box, and your React app reads 
 **Option B: Hardcoded Config**
 Pass the URLs directly. Great for testing, but the CLI tool won't have a `.env` file to read.
 ```tsx
-<WpConfigProvider config={{ restUrl: 'https://my-site.com/wp-json' }}>
+<WpConfigProvider config={{ restUrl: 'https://YOUR_WEBSITE/wp-json' }}>
     <YourApp />
 </WpConfigProvider>
 ```
