@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-06-14
+### Changed
+- Improved `package.json` description for better clarity and npm search visibility.
+- Optimized `keywords` array to include high-intent search terms (`headless`, `typescript`, `react-query`, `jwt`).
+
 ## [1.0.1] - 2026-06-14
 ### Changed
 - Updated README.md to use generic `YOUR_WEBSITE` placeholders for better clarity.
