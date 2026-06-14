@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-06-14
+### Added
+- Configured ESLint 9 with modern Flat Config (`eslint.config.mjs`) for better TypeScript/React support.
+
+### Changed
+- Relaxed strict ESLint rules (`no-explicit-any`, `no-unused-vars`) to reduce noise in external API integration files.
+
 ## [1.0.2] - 2026-06-14
 ### Changed
 - Improved `package.json` description for better clarity and npm search visibility.
