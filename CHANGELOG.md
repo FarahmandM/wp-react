@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-06-14
+### Added
+- Added `.prettierrc` and `.prettierignore` for consistent, automated code formatting.
+- Added `.editorconfig` to ensure consistent indentation and line endings across all code editors.
+
 ## [1.0.3] - 2026-06-14
 ### Added
 - Configured ESLint 9 with modern Flat Config (`eslint.config.mjs`) for better TypeScript/React support.

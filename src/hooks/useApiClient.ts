@@ -5,39 +5,39 @@ import { WpRestClient } from '@api/WpRestClient';
 import { useWpConfig } from '@components/providers/WpConfigProvider';
 
 export const useApiClient = () => {
-    const { user, refreshToken } = useAuth();
-    const { restUrl } = useWpConfig();
+  const { user, refreshToken } = useAuth();
+  const { restUrl } = useWpConfig();
 
-    //const client = new WpRestClient({ baseURL: restUrl });
-    const client = useMemo(() => {
-        const instance = new WpRestClient({ baseURL: restUrl });
+  //const client = new WpRestClient({ baseURL: restUrl });
+  const client = useMemo(() => {
+    const instance = new WpRestClient({ baseURL: restUrl });
 
-        instance.client.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-            if (user?.token) {
-                config.headers.set('Authorization', `Bearer ${user.token}`);
-            }
-            return config;
-        });
+    instance.client.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+      if (user?.token) {
+        config.headers.set('Authorization', `Bearer ${user.token}`);
+      }
+      return config;
+    });
 
-        instance.client.interceptors.response.use(
-            (response: AxiosResponse) => response,
-            async (error: AxiosError) => {
-                if (error.response?.status === 401) {
-                    const newToken = await refreshToken();
-                    if (error.config && error.config.headers) {
-                        error.config.headers['Authorization'] = `Bearer ${newToken}`;
-                    }
-                    return instance.client(error.config as InternalAxiosRequestConfig);
-                }
+    instance.client.interceptors.response.use(
+      (response: AxiosResponse) => response,
+      async (error: AxiosError) => {
+        if (error.response?.status === 401) {
+          const newToken = await refreshToken();
+          if (error.config && error.config.headers) {
+            error.config.headers['Authorization'] = `Bearer ${newToken}`;
+          }
+          return instance.client(error.config as InternalAxiosRequestConfig);
+        }
 
-                return Promise.reject(error);
-            }
-        );
+        return Promise.reject(error);
+      }
+    );
 
-        return instance;
-    }, [user?.token, refreshToken, restUrl]);
+    return instance;
+  }, [user?.token, refreshToken, restUrl]);
 
-    /*
+  /*
     client.client.interceptors.request.use(config => {
         if (user?.token) {
             config.headers.Authorization = `Bearer ${user.token}`;
@@ -58,5 +58,5 @@ export const useApiClient = () => {
     );
     */
 
-    return client;
+  return client;
 };

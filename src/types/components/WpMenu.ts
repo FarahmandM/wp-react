@@ -1,6 +1,6 @@
 interface WpMenuProps {
-    location: string;
-    className?: string;
+  location: string;
+  className?: string;
 }
 
 interface MenuItem {
@@ -17,4 +17,3 @@ interface Menu {
 export type { WpMenuProps };
 export type { MenuItem };
 export type { Menu };
-

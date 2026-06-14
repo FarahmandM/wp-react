@@ -19,4 +19,9 @@ export type { WpConfig } from './types/config';
 export type { WpMedia } from './types/components/WpMedia';
 export type { WpMenuProps, MenuItem, Menu } from './types/components/WpMenu';
 export type { WpPostProps } from './types/components/WpPost';
-export type { UseAuthResult, UsePostsResult, UseCategoriesResult, UseMediaResult } from './types/hooks';
+export type {
+  UseAuthResult,
+  UsePostsResult,
+  UseCategoriesResult,
+  UseMediaResult,
+} from './types/hooks';

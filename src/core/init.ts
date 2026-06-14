@@ -4,6 +4,6 @@ import { initialize } from './config';
 export function initializeWpReact(config: Partial<WpConfig> = {}) {
   initialize(config);
   return {
-    version: '__VERSION__'
+    version: '__VERSION__',
   };
 }

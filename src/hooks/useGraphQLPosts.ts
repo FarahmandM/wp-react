@@ -5,14 +5,14 @@ import { PostFragment } from '@models/api/graphql/fragments';
 import { WpGraphQLQueryPosts } from '@models/api/graphql/queries';
 
 export const useGraphQLPosts = () => {
-    return useQuery({
-        queryKey: ['graphql-posts'],
-        queryFn: async () => {
-            const { graphqlUrl } = getConfig();
-            if (!graphqlUrl) throw new Error('GraphQL URL is not configured');
-            const client = await getGraphQLClient(graphqlUrl);
+  return useQuery({
+    queryKey: ['graphql-posts'],
+    queryFn: async () => {
+      const { graphqlUrl } = getConfig();
+      if (!graphqlUrl) throw new Error('GraphQL URL is not configured');
+      const client = await getGraphQLClient(graphqlUrl);
 
-            const query = `
+      const query = `
                 ${PostFragment}
                 query AllPosts {
                         posts {
@@ -23,8 +23,8 @@ export const useGraphQLPosts = () => {
                 }
             `;
 
-            const data = await client.request<WpGraphQLQueryPosts>(query);
-            return data.posts.nodes;
-        }
-    });
+      const data = await client.request<WpGraphQLQueryPosts>(query);
+      return data.posts.nodes;
+    },
+  });
 };

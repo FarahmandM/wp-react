@@ -7,18 +7,18 @@ const command = process.argv[2];
 const args = process.argv.slice(3);
 
 (async () => {
-    switch (command) {
-        case 'init':
-            await runInit(args);
-            break;
-        case 'login':
-            await runLogin();
-            break;
-        case 'check':
-            await checkEnv();
-            break;
-        default:
-            console.log(`🧰 wp-react CLI
+  switch (command) {
+    case 'init':
+      await runInit(args);
+      break;
+    case 'login':
+      await runLogin();
+      break;
+    case 'check':
+      await checkEnv();
+      break;
+    default:
+      console.log(`🧰 wp-react CLI
 
 Usage:
     wp-react-cli init         Bootstrap .env (or .env.dev, etc.)
@@ -33,5 +33,5 @@ Examples:
     npx wp-react-cli login
     npx wp-react-cli check
 `);
-    }
+  }
 })();
