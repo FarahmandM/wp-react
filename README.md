@@ -44,8 +44,8 @@ Here is exactly how to set up a project from scratch.
 Create a `.env` file in the root of your React project. This file is used by the `wp-react-cli` tool to test your connection, and acts as a fallback for your React app.
 
 ```env
-REACT_APP_WP_REST_URL=https://YOUR_WEBSITE/wp-json
-REACT_APP_JWT_AUTH_URL=https://YOUR_WEBSITE/wp-json/jwt-auth/v1/token
+REACT_APP_WP_REST_URL=https://YOUR_WP_WEBSITE/wp-json
+REACT_APP_JWT_AUTH_URL=https://YOUR_WP_WEBSITE/wp-json/jwt-auth/v1/token
 ```
 
 ### Step 2: Wrap your App with Providers
@@ -118,7 +118,7 @@ Rely on the `.env` file. The CLI works out of the box, and your React app reads 
 **Option B: Hardcoded Config**
 Pass the URLs directly. Great for testing, but the CLI tool won't have a `.env` file to read.
 ```tsx
-<WpConfigProvider config={{ restUrl: 'https://YOUR_WEBSITE/wp-json' }}>
+<WpConfigProvider config={{ restUrl: 'https://YOUR_WP_WEBSITE/wp-json' }}>
     <YourApp />
 </WpConfigProvider>
 ```
@@ -255,14 +255,14 @@ If you are using the `.env` approach, these are the supported variables:
 
 ```env
 # Required for REST API
-REACT_APP_WP_REST_URL=https://your-wp-site.com/wp-json
+REACT_APP_WP_REST_URL=https://YOUR_WP_WEBSITE.com/wp-json
 
 # Optional for GraphQL
-REACT_APP_WP_GRAPHQL_URL=https://your-wp-site.com/graphql
+REACT_APP_WP_GRAPHQL_URL=https://YOUR_WP_WEBSITE.com/graphql
 
 # Required for JWT Authentication (Must include the full /token path for the CLI)
-REACT_APP_JWT_AUTH_URL=https://your-wp-site.com/wp-json/jwt-auth/v1/token
-REACT_APP_JWT_REFRESH_URL=https://your-wp-site.com/wp-json/jwt-auth/v1/token/refresh
+REACT_APP_JWT_AUTH_URL=https://YOUR_WP_WEBSITE.com/wp-json/jwt-auth/v1/token
+REACT_APP_JWT_REFRESH_URL=https://YOUR_WP_WEBSITE.com/wp-json/jwt-auth/v1/token/refresh
 
 # Optional: Cache TTL in milliseconds (Default: 300000 / 5 mins)
 REACT_APP_CACHE_TTL=300000

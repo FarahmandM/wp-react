@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.5] - 2026-06-15
+### Changed
+- Updated README.md to use generic `YOUR_WP_WEBSITE` placeholders for better clarity.
+
 ## [1.0.4] - 2026-06-14
 ### Added
 - Added `.prettierrc` and `.prettierignore` for consistent, automated code formatting.
