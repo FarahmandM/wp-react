@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.6] - 2026-07-05
+### Added
+- Added professional `shields.io` badges (Downloads, Bundle Size and TypeScript) to README.
+
+### Security
+- Override form-data to ^4.0.6 for CRLF injection protection.
+
 ## [1.0.5] - 2026-06-15
 ### Changed
 - Updated README.md to use generic `YOUR_WP_WEBSITE` placeholders for better clarity.

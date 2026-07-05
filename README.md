@@ -1,7 +1,10 @@
 # wp-react
 
-[![npm version](https://img.shields.io/npm/v/wp-react)](https://www.npmjs.com/package/wp-react)  
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)  
+[![npm version](https://img.shields.io/npm/v/wp-react?style=flat-square)](https://www.npmjs.com/package/wp-react)
+[![npm downloads](https://img.shields.io/npm/dm/wp-react?style=flat-square)](https://www.npmjs.com/package/wp-react)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/wp-react?style=flat-square)](https://bundlephobia.com/package/wp-react)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 > A modern, fully-typed React toolkit for building applications powered by the WordPress REST and GraphQL APIs.
 
