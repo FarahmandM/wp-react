@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+# [1.0.7] - 2026-07-05
+### Security
+- Upgraded `axios` to `^1.18.0` to patch a high-severity prototype pollution vulnerability in the Node.js HTTP adapter (GHSA-gcfj-64vw-6mp9).
+
 ## [1.0.6] - 2026-07-05
 ### Added
 - Added professional `shields.io` badges (Downloads, Bundle Size and TypeScript) to README.
