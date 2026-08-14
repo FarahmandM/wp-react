@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.8] - 2026-08-14
+## [1.0.9] - 2026-08-14
 ### Security
 - Upgraded `js-yaml` to `^4.3.1` via `overrides` to patch quadratic CPU consumption vulnerability (CVE-2026-59870).
 - Upgraded `dompurify` to `^3.4.13` to patch XSS vulnerability via IN_PLACE hook removal.
@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### CI/CD & Infrastructure
 - Implemented GitHub Actions Trusted Publishing (OIDC) for secure, tokenless automated releases.
 - Added cryptographic build provenance (`--provenance`) to all future npm releases.
+- Updated GitHub Actions workflow to use Node.js 24 for compatibility with modern npm engines.
 - Cleaned up `.gitignore` to properly track dotfiles and configuration.
 
 ### Repository Health & DX
