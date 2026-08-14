@@ -1,6 +1,6 @@
 {
     "name": "wp-react",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "A modern, fully-typed React toolkit for headless WordPress featuring REST/GraphQL hooks, JWT auth, React Query integration, and a setup CLI.",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
@@ -77,7 +77,6 @@
         "@rollup/plugin-typescript": "^12.1.2",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
-        "@types/dompurify": "^3.2.0",
         "@types/express": "^5.0.3",
         "@types/inquirer": "^9.0.8",
         "@types/jest": "^29.5.14",
@@ -116,10 +115,13 @@
         "@tanstack/react-query-devtools": "^5.0.0",
         "@types/inquirer": "^9.0.8",
         "axios": "^1.18.0",
-        "dompurify": "^3.2.5",
+        "dompurify": "^3.4.13",
         "graphql-request": "^7.1.2"
     },
     "overrides": {
-        "form-data": "^4.0.6"
+        "form-data": "^4.0.6",
+        "js-yaml": "^4.3.1",
+        "dompurify": "^3.4.13",
+        "brace-expansion": "^1.1.18"
     }
 }

@@ -7,7 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-# [1.0.7] - 2026-07-05
+## [1.0.8] - 2026-08-14
+### Security
+- Upgraded `js-yaml` to `^4.3.1` via `overrides` to patch quadratic CPU consumption vulnerability (CVE-2026-59870).
+- Upgraded `dompurify` to `^3.4.13` to patch XSS vulnerability via IN_PLACE hook removal.
+- Upgraded `brace-expansion` to `^1.1.18` via `overrides` to patch DoS via unbounded expansion length.
+- Removed deprecated `@types/dompurify` as DOMPurify v3+ ships with built-in TypeScript definitions.
+
+### CI/CD & Infrastructure
+- Implemented GitHub Actions Trusted Publishing (OIDC) for secure, tokenless automated releases.
+- Added cryptographic build provenance (`--provenance`) to all future npm releases.
+- Cleaned up `.gitignore` to properly track dotfiles and configuration.
+
+### Repository Health & DX
+- Added `.env.example` to provide a clear template for CLI configuration.
+- Configured GitHub Community Health files: Issue templates, PR templates, and Security policy (`SECURITY.md`).
+
+## [1.0.7] - 2026-08-24
 ### Security
 - Upgraded `axios` to `^1.18.0` to patch a high-severity prototype pollution vulnerability in the Node.js HTTP adapter (GHSA-gcfj-64vw-6mp9).
 

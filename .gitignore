@@ -1,34 +1,28 @@
-.*
-!/.gitignore
-!/.npmignore
-!.prettierrc
-!.prettierignore
-!.editorconfig
-
+# Dependencies & Build Artifacts
 node_modules/
 dist/
 coverage/
 .cache/
 .rollup.cache/
 *.tgz
+*.tsbuildinfo
 
+# Environment & Secrets
 .env
 .env.local
 .env.*.local
+.npmrc
 
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.npmrc
-
+# Editor & OS Files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-*.tsbuildinfo
-
 .DS_Store
 Thumbs.db
