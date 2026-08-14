@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### CI/CD
 - Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.
-- Added CodeQL static code analysis workflow for automated security scanning.
+- Configured CodeQL to scan both TypeScript source code and GitHub Actions workflows for vulnerabilities.
+- Optimized CodeQL build mode (`none`) for faster security scans.
 
 ## [1.0.9] - 2026-08-14
 ### Security
