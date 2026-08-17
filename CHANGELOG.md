@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Refined package description to accurately reflect the library as a "type-safe" toolkit.
+- Switched documentation site `baseUrl` to root (`/`) to serve from the `wp-react.js.org` custom domain.
 
 ### CI/CD
 - Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.
