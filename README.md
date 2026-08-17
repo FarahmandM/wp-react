@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-> A modern, fully-typed React toolkit for building applications powered by the WordPress REST and GraphQL APIs.
+> A modern, type-safe React toolkit for building applications powered by the WordPress REST and GraphQL APIs.
 
 `wp-react` is a hook-driven React integration for WordPress. It handles authentication (JWT/OAuth), data fetching, media, menus, and secure HTML rendering, with deep integration into React Query and optional OpenTelemetry tracing.
 
@@ -281,3 +281,11 @@ Want to contribute? Check out our [Contributing Guidelines](CONTRIBUTING.md) to 
 
 ## 📜 License  
 MIT © 2018-2026 [Farahmand Moslemi](https://github.com/FarahmandM)
+
+---
+
+## Disclaimer
+
+wp-react is an independent open-source project and is not affiliated with, endorsed by, or sponsored by the WordPress Foundation or Meta Platforms, Inc. WordPress® is a registered trademark of the WordPress Foundation. React is a trademark of Meta Platforms, Inc.
+
+
