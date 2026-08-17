@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded CodeQL GitHub Actions from `v3` to `v4` to resolve Node 20 deprecation warnings and prepare for v3 retirement.
 - Configured Dependabot to only monitor the root `package.json` to prevent conflicts with the documentation site.
 
+### Dependencies
+- Synced `@typescript-eslint/parser` to `^8.67.0` to match `eslint-plugin` and resolve peer dependency conflicts.
+- Upgraded `inquirer` to `^14.0.2` and `@rollup/plugin-alias` to `6.0.0`.
+- Upgraded `@opentelemetry/sdk-trace-web` to `2.10.0`.
+- Upgraded `react-dom` and `@types/react-dom` to the latest `19.2.x` patch releases.
+
 ## [1.0.9] - 2026-08-14
 ### Security
 - Upgraded `js-yaml` to `^4.3.1` via `overrides` to patch quadratic CPU consumption vulnerability (CVE-2026-59870).
