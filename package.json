@@ -1,7 +1,7 @@
 {
     "name": "wp-react",
     "version": "1.0.9",
-    "description": "A modern, fully-typed React toolkit for headless WordPress featuring REST/GraphQL hooks, JWT auth, React Query integration, and a setup CLI.",
+    "description": "A modern, type-safe React toolkit for headless WordPress with REST and GraphQL support.",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
