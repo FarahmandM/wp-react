@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Launched documentation site powered by Docusaurus, available at `wp-react.js.org`.
+- Added GitHub Pages workflow to automatically build and deploy the docs on push to `master`.
+- Added trademark disclaimer clarifying wp-react is not affiliated with WordPress Foundation or Meta Platforms, Inc.
+
+### Changed
+- Refined package description to accurately reflect the library as a "type-safe" toolkit.
+
 ### CI/CD
 - Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.
 - Configured CodeQL to scan both TypeScript source code and GitHub Actions workflows for vulnerabilities.
