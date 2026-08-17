@@ -1,0 +1,109 @@
+---
+sidebar_position: 9
+slug: /hooks/use-graphql-posts
+title: useGraphQLPosts
+description: "useGraphQLPosts hook reference: fetch WordPress posts using WPGraphQL with type-safe fragments and queries."
+---
+
+# useGraphQLPosts
+
+The `useGraphQLPosts` hook fetches posts using WPGraphQL with type-safe queries and fragments.
+
+## Basic Usage
+
+```tsx
+import { useGraphQLPosts } from 'wp-react';
+
+function GraphQLPostList() {
+  const { data: posts, isLoading, error } = useGraphQLPosts();
+
+  if (isLoading) return <div>Loading posts...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {posts?.map(post => (
+        <li key={post.id}>
+          <h3>{post.title}</h3>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## Return Value
+
+Returns a TanStack Query result object:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `data` | `Post[] \| undefined` | Array of posts from GraphQL |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch posts |
+
+## How It Works
+
+The hook:
+1. Retrieves the GraphQL URL from configuration
+2. Creates a GraphQL client
+3. Executes a query using the `PostFragment`
+4. Returns the posts from `data.posts.nodes`
+
+### Query Structure
+
+```graphql
+fragment PostFragment on Post {
+  id
+  title
+  content
+  # ... other fields from PostFragment
+}
+
+query AllPosts {
+  posts {
+    nodes {
+      ...PostFragment
+    }
+  }
+}
+```
+
+## Configuration
+
+Make sure you've configured the GraphQL URL in your provider:
+
+```tsx
+import { WpConfigProvider } from 'wp-react';
+
+function App() {
+  return (
+    <WpConfigProvider
+      restUrl="https://YOUR_WP_WEBSITE/wp-json"
+      graphqlUrl="https://YOUR_WP_WEBSITE/graphql"
+    >
+      <YourApp />
+    </WpConfigProvider>
+  );
+}
+```
+
+## Error Handling
+
+If the GraphQL URL is not configured, the hook throws an error:
+
+```tsx
+const { data, error } = useGraphQLPosts();
+
+if (error) {
+  console.error('GraphQL error:', error.message);
+  // "GraphQL URL is not configured"
+}
+```
+
+## Next Steps
+
+- [usePosts](/docs/hooks/use-posts) — REST API alternative
+- [usePost](/docs/hooks/use-post) — Fetch single post via REST

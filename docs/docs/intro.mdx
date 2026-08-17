@@ -1,0 +1,96 @@
+---
+sidebar_position: 1
+slug: /intro
+title: Introduction
+description: "wp-react is a type-safe React toolkit for headless WordPress: type-safe hooks for REST and GraphQL, built-in authentication, caching, and a CLI."
+---
+
+# Introduction
+
+Welcome to **wp-react**, a modern, type-safe React toolkit for building applications powered by WordPress REST and GraphQL APIs.
+
+## Why wp-react?
+
+Building headless WordPress applications often means writing repetitive boilerplate code for API calls, authentication, and state management. wp-react solves this by providing:
+
+- **Type-safe hooks** for common WordPress operations
+- **Built-in authentication** support (JWT, OAuth)
+- **REST and GraphQL** support in one package
+- **Automatic caching** via TanStack Query
+- **CLI tools** for configuration and validation
+
+## Quick Start
+
+### Installation
+
+```bash
+npm install wp-react
+```
+
+### Basic Usage
+
+```tsx
+import { WpConfigProvider, usePosts } from 'wp-react';
+
+function App() {
+  return (
+    <WpConfigProvider 
+      restUrl="https://YOUR_WP_WEBSITE/wp-json"
+      graphqlUrl="https://YOUR_WP_WEBSITE/graphql"
+    >
+      <PostList />
+    </WpConfigProvider>
+  );
+}
+
+function PostList() {
+  const { posts, totalPages, totalItems, isLoading, error } = usePosts({
+    per_page: 10,
+    _embed: true,
+  });
+  
+  if (isLoading) return <div>Loading posts...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  
+  return (
+    <div>
+      <p>Found {totalItems} posts across {totalPages} pages</p>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title.rendered}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+## Configuration
+
+wp-react uses environment variables for configuration. Use the CLI to set them up:
+
+```bash
+npx wp-react-cli init
+```
+
+This creates a `.env` file with:
+
+```env
+REACT_APP_WP_REST_URL="https://YOUR_WP_WEBSITE/wp-json"
+REACT_APP_WP_GRAPHQL_URL="https://YOUR_WP_WEBSITE/graphql"
+REACT_APP_JWT_AUTH_URL="https://YOUR_WP_WEBSITE/wp-json/jwt-auth/v1/token"
+REACT_APP_CACHE_TTL="300000"
+```
+
+See the [CLI Reference](/docs/cli) for more details.
+
+## What's Next?
+
+- [Explore the Hooks API](/docs/hooks/overview) — Learn about all available hooks
+- [CLI Reference](/docs/cli) — Configure your environment and validate endpoints
+- [Authentication Guide](/docs/hooks/use-auth) — Secure your API requests
+
+## Community
+
+- [GitHub Repository](https://github.com/FarahmandM/wp-react)
+- [Report Issues](https://github.com/FarahmandM/wp-react/issues)

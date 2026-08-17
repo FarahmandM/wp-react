@@ -1,0 +1,94 @@
+---
+sidebar_position: 5
+slug: /hooks/use-pages
+title: usePages
+description: "usePages hook reference: fetch WordPress pages with filtering and pagination support."
+---
+
+# usePages
+
+The `usePages` hook fetches WordPress pages. Pages use the same data structure as posts in the WordPress REST API.
+
+## Basic Usage
+
+```tsx
+import { usePages } from 'wp-react';
+
+function PageList() {
+  const { data: pages, isLoading, error } = usePages();
+
+  if (isLoading) return <div>Loading pages...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {pages?.map(page => (
+        <li key={page.id}>
+          <a href={page.link}>{page.title.rendered}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `params` | `Record<string, any>` | Query parameters (optional) |
+
+### Common Parameters
+
+- `per_page` — Number of pages per page (default: 10)
+- `page` — Page number for pagination
+- `search` — Search term
+- `parent` — Parent page ID
+- `status` — Page status ('publish', 'draft', etc.)
+- `orderby` — Sort field ('date', 'title', 'id', 'menu_order')
+- `order` — Sort direction ('asc' or 'desc')
+
+## Return Value
+
+Returns a TanStack Query result object:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `data` | `WpPost[] \| undefined` | Array of pages |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch pages |
+
+## Example: Navigation Menu
+
+```tsx
+import { usePages } from 'wp-react';
+
+function Navigation() {
+  const { data: pages, isLoading } = usePages({
+    per_page: 20,
+    orderby: 'menu_order',
+    order: 'asc',
+    parent: 0, // Top-level pages only
+  });
+
+  if (isLoading) return <nav>Loading...</nav>;
+
+  return (
+    <nav>
+      <ul>
+        {pages?.map(page => (
+          <li key={page.id}>
+            <a href={page.link}>{page.title.rendered}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+```
+
+## Next Steps
+
+- [usePost](/docs/hooks/use-post) — Fetch a single page
+- [usePosts](/docs/hooks/use-posts) — Fetch posts

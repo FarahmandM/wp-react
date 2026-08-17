@@ -1,0 +1,81 @@
+---
+sidebar_position: 11
+slug: /hooks/use-wp-config
+title: useWpConfig
+description: "useWpConfig hook reference: access WordPress REST and GraphQL URLs and other configuration values."
+---
+
+# useWpConfig
+
+The `useWpConfig` hook provides access to WordPress configuration values set in the `WpConfigProvider`.
+
+## Basic Usage
+
+```tsx
+import { useWpConfig } from 'wp-react';
+
+function ConfigDisplay() {
+  const { restUrl, graphqlUrl } = useWpConfig();
+
+  return (
+    <div>
+      <p>REST API: {restUrl}</p>
+      <p>GraphQL: {graphqlUrl || 'Not configured'}</p>
+    </div>
+  );
+}
+```
+
+## Return Value
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `restUrl` | `string` | WordPress REST API base URL |
+| `graphqlUrl` | `string \| undefined` | WPGraphQL endpoint URL (if configured) |
+
+## Usage in Custom Hooks
+
+Use `useWpConfig` to build your own custom hooks:
+
+```tsx
+import { useWpConfig } from 'wp-react';
+import { useQuery } from '@tanstack/react-query';
+
+function useCustomEndpoint(endpoint: string) {
+  const { restUrl } = useWpConfig();
+  
+  return useQuery({
+    queryKey: ['custom', endpoint],
+    queryFn: async () => {
+      const response = await fetch(`${restUrl}${endpoint}`);
+      return response.json();
+    },
+    enabled: !!restUrl,
+  });
+}
+```
+
+## Provider Setup
+
+Make sure you've wrapped your app with `WpConfigProvider`:
+
+```tsx
+import { WpConfigProvider } from 'wp-react';
+
+function App() {
+  return (
+    <WpConfigProvider
+      restUrl="https://YOUR_WP_WEBSITE/wp-json"
+      graphqlUrl="https://YOUR_WP_WEBSITE/graphql"
+    >
+      <YourApp />
+    </WpConfigProvider>
+  );
+}
+```
+
+## Next Steps
+
+- [useApiClient](/docs/hooks/use-api-client) — Authenticated API client
+- [useGraphQLPosts](/docs/hooks/use-graphql-posts) — Uses GraphQL URL
+- [Hooks Overview](/docs/hooks/overview) — All available hooks

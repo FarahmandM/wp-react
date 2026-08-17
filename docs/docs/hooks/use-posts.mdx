@@ -1,0 +1,203 @@
+---
+sidebar_position: 3
+slug: /hooks/use-posts
+title: usePosts
+description: "usePosts hook reference: fetch WordPress posts with pagination, embedded data, and full type safety using TanStack Query."
+---
+
+# usePosts
+
+The `usePosts` hook fetches WordPress posts with built-in pagination support, caching, and type safety. It uses TanStack Query under the hood for optimal performance.
+
+## Basic Usage
+
+```tsx
+import { usePosts } from 'wp-react';
+
+function PostList() {
+  const { posts, totalPages, totalItems, isLoading, error } = usePosts({
+    per_page: 10,
+    page: 1,
+  });
+
+  if (isLoading) return <div>Loading posts...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      <p>Showing {posts.length} of {totalItems} posts</p>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title.rendered}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+## Parameters
+
+### `params` (optional)
+
+Query parameters passed to the WordPress REST API:
+
+```typescript
+params?: {
+  per_page?: number;    // Posts per page (default: 10, max: 100)
+  page?: number;        // Current page number
+  search?: string;      // Search term
+  categories?: number[]; // Category IDs
+  tags?: number[];      // Tag IDs
+  author?: number;      // Author ID
+  status?: string;      // Post status: 'publish', 'draft', etc.
+  orderby?: string;     // Sort by: 'date', 'title', 'id', etc.
+  order?: 'asc' | 'desc';
+  _embed?: boolean;     // Include embedded author/featured media
+  // ... any other WP REST API parameters
+}
+```
+
+### `opts` (optional)
+
+TanStack Query options:
+
+```typescript
+opts?: UseQueryOptions<{ posts: WpPost[]; totalPages: number; totalItems: number }, Error>
+```
+
+## Return Value
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `posts` | `WpPost[]` | Array of posts (empty array if none) |
+| `totalPages` | `number \| undefined` | Total number of pages available |
+| `totalItems` | `number \| undefined` | Total number of posts across all pages |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch posts |
+
+## Advanced Examples
+
+### Pagination
+
+```tsx
+import { useState } from 'react';
+import { usePosts } from 'wp-react';
+
+function PaginatedPosts() {
+  const [page, setPage] = useState(1);
+  const { posts, totalPages, isLoading } = usePosts({
+    per_page: 10,
+    page,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+
+  return (
+    <div>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title.rendered}</li>
+        ))}
+      </ul>
+      
+      <div>
+        <button 
+          onClick={() => setPage(p => Math.max(1, p - 1))}
+          disabled={page === 1}
+        >
+          Previous
+        </button>
+        <span> Page {page} of {totalPages} </span>
+        <button 
+          onClick={() => setPage(p => p + 1)}
+          disabled={page === totalPages}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Search and Filter
+
+```tsx
+import { useState } from 'react';
+import { usePosts } from 'wp-react';
+
+function SearchPosts() {
+  const [search, setSearch] = useState('');
+  
+  const { posts, isLoading } = usePosts({
+    search,
+    per_page: 20,
+    _embed: true,
+  });
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search posts..."
+      />
+      
+      {isLoading ? (
+        <div>Searching...</div>
+      ) : (
+        <ul>
+          {posts.map(post => (
+            <li key={post.id}>
+              {post.title.rendered}
+              {post._embedded?.author?.[0] && (
+                <span> by {post._embedded.author[0].name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+```
+
+### Category Filtering
+
+```tsx
+import { usePosts } from 'wp-react';
+
+function CategoryPosts({ categoryId }: { categoryId: number }) {
+  const { posts, isLoading } = usePosts({
+    categories: [categoryId],
+    per_page: 10,
+    _embed: true,
+  });
+
+  if (isLoading) return <div>Loading category posts...</div>;
+
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>{post.title.rendered}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## Performance Features
+
+- **Automatic Caching**: Posts are cached by TanStack Query and reused on subsequent renders
+- **Placeholder Data**: Uses `keepPreviousData` to show stale data while fetching new data
+- **Embedded Data**: Use `_embed: true` to include author and featured media without extra requests
+- **Query Deduplication**: Multiple components requesting the same posts share the same query
+
+## Next Steps
+
+- [usePost](/docs/hooks/use-post) — Fetch a single post
+- [usePages](/docs/hooks/use-pages) — Fetch WordPress pages
+- [useCategories](/docs/hooks/use-categories) — Fetch categories

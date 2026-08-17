@@ -1,0 +1,133 @@
+---
+sidebar_position: 10
+slug: /hooks/use-api-client
+title: useApiClient
+description: "useApiClient hook reference: get an authenticated Axios client with automatic token refresh and request/response interceptors."
+---
+
+# useApiClient
+
+The `useApiClient` hook provides an authenticated Axios client that automatically attaches JWT tokens to requests and handles token refresh on 401 errors.
+
+## Basic Usage
+
+```tsx
+import { useApiClient } from 'wp-react';
+
+function UserProfile() {
+  const client = useApiClient();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    client.get('/wp/v2/users/me').then(response => {
+      setUser(response.data);
+    });
+  }, [client]);
+
+  if (!user) return <div>Loading...</div>;
+
+  return <div>Welcome, {user.name}!</div>;
+}
+```
+
+## Features
+
+- **Automatic Token Attachment**: Adds `Authorization: Bearer <token>` header to all requests
+- **Token Refresh**: Automatically refreshes expired tokens on 401 responses
+- **Request Retry**: Retries failed requests with the new token after refresh
+- **Memoized**: Client instance is memoized based on user token and config
+
+## How It Works
+
+### Request Interceptor
+
+```typescript
+// Automatically adds token to outgoing requests
+instance.client.interceptors.request.use((config) => {
+  if (user?.token) {
+    config.headers.set('Authorization', `Bearer ${user.token}`);
+  }
+  return config;
+});
+```
+
+### Response Interceptor
+
+```typescript
+// Handles 401 errors by refreshing token and retrying
+instance.client.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      const newToken = await refreshToken();
+      error.config.headers['Authorization'] = `Bearer ${newToken}`;
+      return instance.client(error.config);
+    }
+    return Promise.reject(error);
+  }
+);
+```
+
+## Example: Custom Authenticated Endpoint
+
+```tsx
+import { useApiClient } from 'wp-react';
+
+function CustomData() {
+  const client = useApiClient();
+  const [data, setData] = useState(null);
+
+  const fetchCustomData = async () => {
+    try {
+      const response = await client.get('/wp/v2/custom-endpoint');
+      setData(response.data);
+    } catch (error) {
+      console.error('Failed to fetch:', error);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={fetchCustomData}>Load Custom Data</button>
+      {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+    </div>
+  );
+}
+```
+
+## Example: POST Request with Authentication
+
+```tsx
+import { useApiClient } from 'wp-react';
+
+function CreatePost() {
+  const client = useApiClient();
+
+  const handleCreate = async () => {
+    try {
+      const response = await client.post('/wp/v2/posts', {
+        title: 'My New Post',
+        content: 'Hello, world!',
+        status: 'publish',
+      });
+      console.log('Created:', response.data);
+    } catch (error) {
+      console.error('Failed to create:', error);
+    }
+  };
+
+  return <button onClick={handleCreate}>Create Post</button>;
+}
+```
+
+## Requirements
+
+- Must be wrapped in `WpConfigProvider` for `restUrl`
+- Must be wrapped in `WpAuthProvider` for authentication
+- User must be authenticated for token to be attached
+
+## Next Steps
+
+- [useAuth](/docs/hooks/use-auth) — Access authentication state
+- [usePosts](/docs/hooks/use-posts) — Fetch posts (uses client internally)
+- [Hooks Overview](/docs/hooks/overview) — All available hooks

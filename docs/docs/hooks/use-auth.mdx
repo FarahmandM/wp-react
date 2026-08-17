@@ -1,0 +1,120 @@
+---
+sidebar_position: 2
+slug: /hooks/use-auth
+title: useAuth
+description: "useAuth hook reference: access authentication state, user info, token, and refresh capabilities in your React components."
+---
+
+# useAuth
+
+The `useAuth` hook exposes the current authentication state and methods from the `WpAuthProvider` context.
+
+## Basic Usage
+
+```tsx
+import { useAuth } from 'wp-react';
+
+function AuthStatus() {
+  const auth = useAuth();
+
+  if (auth.isLoading) return <p>Loading auth...</p>;
+  if (auth.error) return <p>Auth error: {auth.error.message}</p>;
+
+  return auth.isAuthenticated ? (
+    <div>
+      <p>Welcome, {auth.user?.name}!</p>
+      <button onClick={auth.logout}>Sign out</button>
+    </div>
+  ) : (
+    <button onClick={() => auth.login({ username: 'user', password: 'pass' })}>
+      Sign in
+    </button>
+  );
+}
+```
+
+## Return Values
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `user` | `WpUser \| null` | The currently authenticated user object |
+| `token` | `string \| null` | The current JWT token |
+| `isAuthenticated` | `boolean` | Whether a user is currently authenticated |
+| `isLoading` | `boolean` | Whether authentication is in progress |
+| `error` | `Error \| null` | The last authentication error |
+| `login` | `(credentials) => Promise<void>` | Authenticate with username/password |
+| `logout` | `() => void` | Clear the authentication state |
+| `refreshToken` | `() => Promise<string>` | Refresh the current token |
+
+## Usage with Authentication
+
+### Login
+
+```tsx
+const { login, error } = useAuth();
+
+const handleLogin = async () => {
+  try {
+    await login({
+      username: 'admin',
+      password: 'your-password'
+    });
+  } catch (err) {
+    console.error('Login failed:', err);
+  }
+};
+```
+
+### Logout
+
+```tsx
+const { logout } = useAuth();
+
+const handleLogout = () => {
+  logout();
+  // Redirect to home or login page
+};
+```
+
+### Token Refresh
+
+The hook automatically handles token refresh when used with `useApiClient`. You can also manually refresh:
+
+```tsx
+const { refreshToken, token } = useAuth();
+
+const handleRefresh = async () => {
+  const newToken = await refreshToken();
+  console.log('New token:', newToken);
+};
+```
+
+## Integration with useApiClient
+
+`useAuth` works seamlessly with `useApiClient` to automatically attach tokens and handle refresh on 401 errors:
+
+```tsx
+import { useAuth, useApiClient } from 'wp-react';
+
+function SecureComponent() {
+  const { isAuthenticated } = useAuth();
+  const client = useApiClient();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // Token is automatically attached by useApiClient
+      client.get('/wp/v2/users/me').then(response => {
+        console.log('User data:', response.data);
+      });
+    }
+  }, [isAuthenticated, client]);
+
+  return <div>...</div>;
+}
+```
+
+## Next Steps
+
+- [useApiClient](/docs/hooks/use-api-client) — Authenticated API requests
+- [usePosts](/docs/hooks/use-posts) — Fetch authenticated content
+- [Hooks Overview](/docs/hooks/overview) — All available hooks

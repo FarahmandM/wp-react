@@ -1,0 +1,78 @@
+---
+sidebar_position: 7
+slug: /hooks/use-user
+title: useUser
+description: "useUser hook reference: fetch WordPress user information by ID with type safety."
+---
+
+# useUser
+
+The `useUser` hook fetches WordPress user information by user ID.
+
+## Basic Usage
+
+```tsx
+import { useUser } from 'wp-react';
+
+function UserProfile({ userId }: { userId: number }) {
+  const { user, isLoading, error } = useUser(userId);
+
+  if (isLoading) return <div>Loading user...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!user) return <div>User not found</div>;
+
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>{user.description}</p>
+      <a href={user.link}>View profile</a>
+    </div>
+  );
+}
+```
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `id` | `number` | The WordPress user ID (required) |
+
+## Return Value
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `user` | `WpUser \| undefined` | The user object |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch the user |
+
+## Example: Post Author
+
+```tsx
+import { usePost, useUser } from 'wp-react';
+
+function PostAuthor({ postId }: { postId: number }) {
+  const { data: post } = usePost(postId);
+  const { user: author, isLoading } = useUser(post?.author || 0);
+
+  if (isLoading || !post) return <div>Loading...</div>;
+  if (!author) return <div>Author not found</div>;
+
+  return (
+    <div className="author-info">
+      {author.avatar_urls?.[96] && (
+        <img src={author.avatar_urls[96]} alt={author.name} />
+      )}
+      <div>
+        <strong>{author.name}</strong>
+        <p>{author.description}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+## Next Steps
+
+- [usePost](/docs/hooks/use-post) — Fetch posts and their authors
+- [useAuth](/docs/hooks/use-auth) — Access current authenticated user

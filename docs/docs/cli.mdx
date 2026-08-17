@@ -1,0 +1,198 @@
+---
+sidebar_position: 3
+slug: /cli
+title: CLI Reference
+description: "CLI reference for wp-react: initialize environment configuration, test authentication, and validate WordPress API endpoints."
+---
+
+# CLI Reference
+
+wp-react includes a command-line interface to help you configure your project environment, test authentication, and validate your WordPress API endpoints.
+
+## Installation
+
+The CLI is included with wp-react. No separate installation needed.
+
+```bash
+npx wp-react-cli <command>
+```
+
+## Commands
+
+### `init`
+
+Initialize your project by creating or updating a `.env` configuration file. The CLI will prompt you for your WordPress API endpoints and cache settings.
+
+```bash
+npx wp-react-cli init
+```
+
+#### What It Does
+
+1. Prompts you for:
+   - WordPress REST API base URL
+   - WordPress GraphQL endpoint
+   - JWT Auth endpoint
+   - Cache TTL (time-to-live in milliseconds)
+   - Target `.env` file (default: `.env`)
+
+2. Validates that your REST and GraphQL endpoints are reachable
+
+3. Optionally tests JWT authentication
+
+4. Writes the configuration to your `.env` file
+
+#### Example Output
+
+```bash
+$ npx wp-react-cli init
+🔧 wp-react CLI Configurator
+
+? WordPress REST API base URL: https://YOUR_WP_WEBSITE/wp-json/wp/v2
+? WordPress GraphQL endpoint: https://YOUR_WP_WEBSITE/graphql
+? JWT Auth endpoint: https://YOUR_WP_WEBSITE/wp-json/jwt-auth/v1/token
+? Cache TTL (ms): 300000
+? Test authentication with: JWT Login
+? Username: admin
+? Password: ****
+✅ REST URL reachable (200)
+✅ GraphQL URL reachable (200)
+✅ Logged in. Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+✅ .env updated at /path/to/project/.env
+```
+
+#### Generated `.env` File
+
+```env
+REACT_APP_WP_REST_URL="https://YOUR_WP_WEBSITE/wp-json/wp/v2"
+REACT_APP_WP_GRAPHQL_URL="https://YOUR_WP_WEBSITE/graphql"
+REACT_APP_JWT_AUTH_URL="https://YOUR_WP_WEBSITE/wp-json/jwt-auth/v1/token"
+REACT_APP_CACHE_TTL="300000"
+```
+
+#### Dry Run Mode
+
+Preview the `.env` file without writing it:
+
+```bash
+npx wp-react-cli init --dry-run
+```
+
+### `login`
+
+Test authentication with your WordPress site using JWT or OAuth.
+
+```bash
+npx wp-react-cli login
+```
+
+#### JWT Login
+
+Tests JWT authentication using credentials from your `.env` file:
+
+```bash
+$ npx wp-react-cli login
+? Select login method: JWT
+? Username: admin
+? Password: ****
+✅ JWT Login successful
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+User: Admin User
+```
+
+#### OAuth Login
+
+Starts an OAuth flow that opens your browser for authentication:
+
+```bash
+$ npx wp-react-cli login
+? Select login method: OAuth
+? OAuth Authorization URL: https://YOUR_WP_WEBSITE/oauth/authorize
+? OAuth Token Exchange URL: https://YOUR_WP_WEBSITE/oauth/token
+? OAuth Client ID: your-client-id
+🌐 Opening OAuth flow in browser...
+✅ Access Token: your-access-token
+```
+
+### `check`
+
+Validate that your WordPress API endpoints (from `.env`) are reachable and responding correctly.
+
+```bash
+npx wp-react-cli check
+```
+
+#### Example Output
+
+```bash
+$ npx wp-react-cli check
+🔍 Checking endpoints...
+
+✅ REACT_APP_WP_REST_URL reachable (Status: 200)
+✅ REACT_APP_WP_GRAPHQL_URL reachable (Status: 200)
+✅ REACT_APP_JWT_AUTH_URL reachable (Server responded with 401 - Auth required)
+```
+
+#### Status Codes Explained
+
+- **200**: Endpoint is reachable and working
+- **401/403**: Endpoint is reachable but requires authentication (expected for JWT endpoints)
+- **404**: Endpoint is reachable but not found (check if the plugin is active)
+- **No response**: Endpoint is unreachable (check your URL or network)
+
+## Environment Variables
+
+The CLI configures these environment variables:
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `REACT_APP_WP_REST_URL` | WordPress REST API base URL | Yes |
+| `REACT_APP_WP_GRAPHQL_URL` | WordPress GraphQL endpoint | Yes |
+| `REACT_APP_JWT_AUTH_URL` | JWT authentication endpoint | Yes |
+| `REACT_APP_CACHE_TTL` | Cache time-to-live in milliseconds | No (default: 300000) |
+
+## Multiple Environments
+
+You can create separate `.env` files for different environments:
+
+```bash
+# Development environment
+npx wp-react-cli init
+# When prompted for target file, enter: .env.dev
+
+# Production environment
+npx wp-react-cli init
+# When prompted for target file, enter: .env.prod
+```
+
+## Troubleshooting
+
+### "❌ .env file not found"
+
+Run `npx wp-react-cli init` first to create your configuration file.
+
+### "❌ Missing required keys in .env"
+
+Your `.env` file is missing required variables. Run `init` again or manually add:
+- `REACT_APP_WP_REST_URL`
+- `REACT_APP_WP_GRAPHQL_URL`
+- `REACT_APP_JWT_AUTH_URL`
+
+### "❌ [URL] is not reachable"
+
+- Check that your WordPress site is running
+- Verify the URL is correct
+- Check your network connection
+- If using localhost, ensure your WordPress server is accessible
+
+### "❌ JWT Login failed"
+
+- Verify your username and password are correct
+- Check that the JWT Authentication plugin is installed and activated
+- Ensure the JWT endpoint URL is correct
+
+## Next Steps
+
+- [Hooks Overview](/docs/hooks/overview) — Start using wp-react hooks
+- [useAuth](/docs/hooks/use-auth) — Use authentication in your React components
+- [useWpConfig](/docs/hooks/use-wp-config) — Access configuration values

@@ -1,0 +1,135 @@
+---
+sidebar_position: 1
+slug: /hooks/overview
+description: "Every wp-react hook for WordPress: posts, pages, media, categories, users, GraphQL queries, authentication, and configuration access."
+---
+
+# Hooks Overview
+
+wp-react provides a comprehensive set of React hooks for interacting with WordPress APIs. All hooks are fully typed and integrate seamlessly with your React components using TanStack Query for caching and state management.
+
+## Provider Setup
+
+Before using any hooks, wrap your app with `WpConfigProvider` (and optionally `WpAuthProvider` for authenticated features):
+
+```tsx
+import { WpConfigProvider, WpAuthProvider } from 'wp-react';
+
+function App() {
+  return (
+    <WpConfigProvider 
+      restUrl="https://YOUR_WP_WEBSITE/wp-json"
+      graphqlUrl="https://YOUR_WP_WEBSITE/graphql"
+    >
+      <WpAuthProvider>
+        <YourApp />
+      </WpAuthProvider>
+    </WpConfigProvider>
+  );
+}
+```
+
+## Available Hooks
+
+### Content Hooks
+
+| Hook | Description |
+|------|-------------|
+| [`usePosts`](/docs/hooks/use-posts) | Fetch and manage posts with pagination |
+| [`usePost`](/docs/hooks/use-post) | Fetch a single post by ID |
+| [`usePages`](/docs/hooks/use-pages) | Fetch WordPress pages |
+| [`useMedia`](/docs/hooks/use-media) | Fetch media files |
+| [`useCategories`](/docs/hooks/use-categories) | Fetch post categories |
+| [`useUser`](/docs/hooks/use-user) | Fetch user information |
+
+### GraphQL Hooks
+
+| Hook | Description |
+|------|-------------|
+| [`useGraphQLPosts`](/docs/hooks/use-graphql-posts) | Fetch posts via WPGraphQL |
+
+### Authentication & Configuration
+
+| Hook | Description |
+|------|-------------|
+| [`useAuth`](/docs/hooks/use-auth) | Access authentication state and methods |
+| [`useApiClient`](/docs/hooks/use-api-client) | Get an authenticated API client with auto-refresh |
+| [`useWpConfig`](/docs/hooks/use-wp-config) | Access WordPress configuration |
+
+## Common Patterns
+
+### Fetching Posts with Pagination
+
+```tsx
+import { usePosts } from 'wp-react';
+
+function PostList() {
+  const { posts, totalPages, totalItems, isLoading, error } = usePosts({
+    per_page: 10,
+    page: 1,
+    _embed: true,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      <p>Found {totalItems} posts across {totalPages} pages</p>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title.rendered}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+### Using GraphQL
+
+```tsx
+import { useGraphQLPosts } from 'wp-react';
+
+function GraphQLPostList() {
+  const { data: posts, isLoading, error } = useGraphQLPosts();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {posts?.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### Authenticated Requests
+
+```tsx
+import { useAuth, useApiClient } from 'wp-react';
+
+function ProtectedData() {
+  const { isAuthenticated } = useAuth();
+  const client = useApiClient();
+
+  const fetchData = async () => {
+    if (!isAuthenticated) return;
+    const response = await client.get('/wp/v2/users/me');
+    console.log(response.data);
+  };
+
+  return <button onClick={fetchData}>Fetch My Data</button>;
+}
+```
+
+## Next Steps
+
+Explore individual hook documentation for detailed usage:
+
+- [usePosts](/docs/hooks/use-posts) — Managing posts with pagination
+- [useAuth](/docs/hooks/use-auth) — Authentication state and methods
+- [useGraphQLPosts](/docs/hooks/use-graphql-posts) — GraphQL queries

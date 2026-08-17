@@ -1,0 +1,104 @@
+---
+sidebar_position: 6
+slug: /hooks/use-categories
+title: useCategories
+description: "useCategories hook reference: fetch WordPress post categories with filtering and pagination."
+---
+
+# useCategories
+
+The `useCategories` hook fetches WordPress post categories with full type safety and caching.
+
+## Basic Usage
+
+```tsx
+import { useCategories } from 'wp-react';
+
+function CategoryList() {
+  const { categories, isLoading, error } = useCategories();
+
+  if (isLoading) return <div>Loading categories...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {categories.map(category => (
+        <li key={category.id}>
+          {category.name} ({category.count} posts)
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `params` | `Record<string, any>` | Query parameters (optional) |
+
+### Common Parameters
+
+- `per_page` — Categories per page (default: 10, max: 100)
+- `page` — Page number for pagination
+- `search` — Search term
+- `hide_empty` — Hide categories with no posts (boolean)
+- `parent` — Parent category ID
+- `orderby` — Sort field ('name', 'count', 'id', 'slug')
+- `order` — Sort direction ('asc' or 'desc')
+
+## Return Value
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `categories` | `WpCategory[]` | Array of categories (empty array if none) |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch categories |
+
+## Example: Category Filter
+
+```tsx
+import { useState } from 'react';
+import { useCategories, usePosts } from 'wp-react';
+
+function CategoryFilter() {
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const { categories } = useCategories({ hide_empty: true });
+  const { posts, isLoading } = usePosts({
+    categories: selectedCategory ? [selectedCategory] : undefined,
+    per_page: 10,
+  });
+
+  return (
+    <div>
+      <select
+        value={selectedCategory || ''}
+        onChange={(e) => setSelectedCategory(e.target.value ? Number(e.target.value) : null)}
+      >
+        <option value="">All Categories</option>
+        {categories.map(cat => (
+          <option key={cat.id} value={cat.id}>
+            {cat.name}
+          </option>
+        ))}
+      </select>
+
+      {isLoading ? (
+        <div>Loading posts...</div>
+      ) : (
+        <ul>
+          {posts.map(post => (
+            <li key={post.id}>{post.title.rendered}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+```
+
+## Next Steps
+
+- [usePosts](/docs/hooks/use-posts) — Fetch posts by category

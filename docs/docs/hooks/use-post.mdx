@@ -1,0 +1,89 @@
+---
+sidebar_position: 4
+slug: /hooks/use-post
+title: usePost
+description: "usePost hook reference: fetch a single WordPress post by ID with embedded data and type safety."
+---
+
+# usePost
+
+The `usePost` hook fetches a single WordPress post by ID with full type safety and automatic caching.
+
+## Basic Usage
+
+```tsx
+import { usePost } from 'wp-react';
+
+function PostDetail({ postId }: { postId: number }) {
+  const { data: post, isLoading, error } = usePost(postId);
+
+  if (isLoading) return <div>Loading post...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!post) return <div>Post not found</div>;
+
+  return (
+    <article>
+      <h1>{post.title.rendered}</h1>
+      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+    </article>
+  );
+}
+```
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `id` | `number` | The WordPress post ID (required) |
+
+## Return Value
+
+Returns a TanStack Query result object:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `data` | `WpPost \| undefined` | The post object (undefined if loading) |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch the post |
+
+## Features
+
+- **Embedded Data**: Automatically includes `_embed: true` to fetch author and featured media
+- **Conditional Loading**: Only fetches when `id` is provided and `restUrl` is configured
+- **Type Safety**: Returns fully typed `WpPost` objects
+
+## Example with Featured Image
+
+```tsx
+import { usePost } from 'wp-react';
+
+function PostWithImage({ postId }: { postId: number }) {
+  const { data: post, isLoading } = usePost(postId);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (!post) return <div>Not found</div>;
+
+  const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
+
+  return (
+    <article>
+      {featuredImage && (
+        <img 
+          src={featuredImage.source_url} 
+          alt={featuredImage.alt_text}
+          style={{ maxWidth: '100%' }}
+        />
+      )}
+      <h1>{post.title.rendered}</h1>
+      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+    </article>
+  );
+}
+```
+
+## Next Steps
+
+- [usePosts](/docs/hooks/use-posts) — Fetch multiple posts
+- [useUser](/docs/hooks/use-user) — Fetch post author
+- [useMedia](/docs/hooks/use-media) — Fetch media files

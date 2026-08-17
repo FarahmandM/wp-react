@@ -1,0 +1,100 @@
+---
+sidebar_position: 8
+slug: /hooks/use-media
+title: useMedia
+description: "useMedia hook reference: fetch WordPress media library files with filtering and pagination."
+---
+
+# useMedia
+
+The `useMedia` hook fetches files from the WordPress media library.
+
+## Basic Usage
+
+```tsx
+import { useMedia } from 'wp-react';
+
+function MediaGallery() {
+  const { data: media, isLoading, error } = useMedia({
+    per_page: 20,
+    media_type: 'image',
+  });
+
+  if (isLoading) return <div>Loading media...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div className="gallery">
+      {media?.map(item => (
+        <div key={item.id}>
+          <img src={item.source_url} alt={item.alt_text} />
+          <p>{item.title.rendered}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `params` | `Record<string, any>` | Query parameters (optional) |
+
+### Common Parameters
+
+- `per_page` — Items per page (default: 10)
+- `page` — Page number for pagination
+- `search` — Search term
+- `media_type` — Filter by type: 'image', 'video', 'audio', 'application'
+- `mime_type` — Filter by MIME type
+- `author` — Filter by author ID
+- `parent` — Filter by parent post ID
+
+## Return Value
+
+Returns a TanStack Query result object:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `data` | `WpMedia[] \| undefined` | Array of media items |
+| `isLoading` | `boolean` | Whether the query is loading |
+| `error` | `Error \| null` | Error object if the query failed |
+| `refetch` | `() => void` | Function to manually refetch media |
+
+## Example: Featured Images Only
+
+```tsx
+import { useMedia } from 'wp-react';
+
+function FeaturedImages() {
+  const { data: images, isLoading } = useMedia({
+    per_page: 50,
+    media_type: 'image',
+    orderby: 'date',
+    order: 'desc',
+  });
+
+  if (isLoading) return <div>Loading images...</div>;
+
+  return (
+    <div className="image-grid">
+      {images?.map(image => (
+        <figure key={image.id}>
+          <img 
+            src={image.media_details?.sizes?.medium?.source_url || image.source_url}
+            alt={image.alt_text}
+          />
+          <figcaption>{image.title.rendered}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+```
+
+## Next Steps
+
+- [usePost](/docs/hooks/use-post) — Fetch posts with featured media
+- [usePages](/docs/hooks/use-pages) — Fetch pages with media
