@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.
 - Configured CodeQL to scan both TypeScript source code and GitHub Actions workflows for vulnerabilities.
 - Upgraded CodeQL GitHub Actions from `v3` to `v4` to resolve Node 20 deprecation warnings and prepare for v3 retirement.
+- Configured Dependabot to only monitor the root `package.json` to prevent conflicts with the documentation site.
 
 ## [1.0.9] - 2026-08-14
 ### Security

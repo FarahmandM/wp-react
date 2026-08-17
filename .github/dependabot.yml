@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # Only monitor the root, ignore /docs
+    schedule:
+      interval: "weekly"
