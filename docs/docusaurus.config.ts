@@ -33,8 +33,8 @@ const config: Config = {
   // Production URL (matches your js.org subdomain)
   url: 'https://wp-react.js.org',
   // Base path — js.org serves from root, so '/' is correct
-  //baseUrl: '/',
-  baseUrl: '/wp-react',
+  //baseUrl: '/wp-react', // For tesing docs without domain (wp-react.js.org) so accessible without redirect on https://farahmandm.github.io/wp-react/docs/intro
+  baseUrl: '/',
   // Prevent trailing slashes (cleaner URLs for js.org)
   trailingSlash: false,
 
