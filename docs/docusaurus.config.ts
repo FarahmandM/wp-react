@@ -23,6 +23,17 @@ const config: Config = {
         content: 'wp-react is a modern, type-safe React toolkit for building applications powered by the WordPress REST and GraphQL APIs.',
       },
     },
+    { tagName: 'meta', attributes: { name: 'author', content: 'Farahmand Moslemi' } },
+    { tagName: 'meta', attributes: { name: 'google-site-verification', content: 'A7p57RfD_fv7WxtIzXDNrVZqx4IFtjZ4H8OsLIpuEdI' } },
+    { tagName: 'meta', attributes: { name: 'msvalidate.01', content: 'E8978BCF9F40106B485CA47FBC5A52ED' } },
+    { tagName: 'meta', attributes: { property: 'og:type', content: 'website' } },
+    { tagName: 'meta', attributes: { property: 'og:url', content: 'https://wp-react.js.org/' } },
+    { tagName: 'meta', attributes: { property: 'og:site_name', content: 'wp-react' } },
+    { tagName: 'meta', attributes: { property: 'og:image', content: 'https://wp-react.js.org/img/social-card.png' } },
+    { tagName: 'meta', attributes: { name: 'twitter:card', content: 'summary_large_image' } },
+    { tagName: 'meta', attributes: { name: 'twitter:image', content: 'https://wp-react.js.org/img/social-card.png' } },
+    { tagName: 'meta', attributes: { name: 'theme-color', content: '#21759b', media: '(prefers-color-scheme: light)' } },
+    { tagName: 'meta', attributes: { name: 'theme-color', content: '#0a1929', media: '(prefers-color-scheme: dark)' } },
   ],
 
   // Future flags — see https://docusaurus.io/docs/api/docusaurus-config#future
