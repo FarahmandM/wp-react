@@ -25,7 +25,6 @@ const config: Config = {
     },
     { tagName: 'meta', attributes: { name: 'author', content: 'Farahmand Moslemi' } },
     { tagName: 'meta', attributes: { name: 'google-site-verification', content: 'A7p57RfD_fv7WxtIzXDNrVZqx4IFtjZ4H8OsLIpuEdI' } },
-    { tagName: 'meta', attributes: { name: 'msvalidate.01', content: 'E8978BCF9F40106B485CA47FBC5A52ED' } },
     { tagName: 'meta', attributes: { property: 'og:type', content: 'website' } },
     { tagName: 'meta', attributes: { property: 'og:url', content: 'https://wp-react.js.org/' } },
     { tagName: 'meta', attributes: { property: 'og:site_name', content: 'wp-react' } },

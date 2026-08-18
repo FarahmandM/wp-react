@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Launched documentation site powered by Docusaurus, available at `wp-react.js.org`.
 - Added GitHub Pages workflow to automatically build and deploy the docs on push to `master`.
 - Added trademark disclaimer clarifying wp-react is not affiliated with WordPress Foundation or Meta Platforms, Inc.
-- Added Google Search Console and Bing Webmaster Tools verification.
+- Added Google Search Console verification.
+- Added Bing Webmaster Tools verification via XML file to bypass strict HTML parsing.
 - Added SEO and social meta tags (Open Graph, Twitter Card, `theme-color`, `author`).
 - Added an "About" page (`/about`) introducing the project creator and linking to external profiles.
 
