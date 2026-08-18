@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added trademark disclaimer clarifying wp-react is not affiliated with WordPress Foundation or Meta Platforms, Inc.
 - Added Google Search Console and Bing Webmaster Tools verification.
 - Added SEO and social meta tags (Open Graph, Twitter Card, `theme-color`, `author`).
+- Added an "About" page (`/about`) introducing the project creator and linking to external profiles.
 
 ### Changed
 - Refined package description to accurately reflect the library as a "type-safe" toolkit.
