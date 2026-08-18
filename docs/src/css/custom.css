@@ -5,6 +5,11 @@
  */
 
 :root {
+  /* Typography */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ifm-heading-font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
   --ifm-color-primary: #21759b;
   --ifm-color-primary-dark: #1e698c;
   --ifm-color-primary-darker: #1c6384;
@@ -26,6 +31,10 @@
   --ifm-color-primary-lighter: #79e0fb;
   --ifm-color-primary-lightest: #90e5fb;
   --docusaurus-highlighted-code-line-bg: rgba(97, 218, 251, 0.15);
+}
+
+h1, h2, h3, .hero__title {
+  letter-spacing: -0.04em;
 }
 
 .navbar__logo {
