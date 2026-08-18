@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Google Search Console verification.
 - Added Bing Webmaster Tools verification via XML file to bypass strict HTML parsing.
 - Added SEO and social meta tags (Open Graph, Twitter Card, `theme-color`, `author`).
-- Added an "About" page (`/about`) introducing the project creator and linking to external profiles.
+- Added an "About" page (`/about`) introducing the project creator's background across CMS and frontend ecosystems.
 
 ### Changed
 - Refined package description to accurately reflect the library as a "type-safe" toolkit.
