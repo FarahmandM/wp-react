@@ -10,10 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Launched documentation site powered by Docusaurus, available at `wp-react.js.org`.
 - Added GitHub Pages workflow to automatically build and deploy the docs on push to `master`.
 - Added trademark disclaimer clarifying wp-react is not affiliated with WordPress Foundation or Meta Platforms, Inc.
+- Added Google Search Console and Bing Webmaster Tools verification.
+- Added SEO and social meta tags (Open Graph, Twitter Card, `theme-color`, `author`).
 
 ### Changed
 - Refined package description to accurately reflect the library as a "type-safe" toolkit.
 - Switched documentation site `baseUrl` to root (`/`) to serve from the `wp-react.js.org` custom domain.
+- Rebranded documentation theme colors to match the wp-react logo (WordPress blue / React cyan).
 
 ### CI/CD
 - Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.
