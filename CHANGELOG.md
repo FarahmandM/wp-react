@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `inquirer` to `^14.0.2` and `@rollup/plugin-alias` to `6.0.0`.
 - Upgraded `@opentelemetry/sdk-trace-web` to `2.10.0`.
 - Upgraded `react-dom` and `@types/react-dom` to the latest `19.2.x` patch releases.
+- Resolved `brace-expansion` DoS advisory by re-resolving the lockfile to patched versions (`1.1.16+` / `5.0.7+`).
 
 ## [1.0.9] - 2026-08-14
 ### Security
