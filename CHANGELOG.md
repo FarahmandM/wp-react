@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Switched documentation site `baseUrl` to root (`/`) to serve from the `wp-react.js.org` custom domain.
 - Rebranded documentation theme colors to match the wp-react logo (WordPress blue / React cyan).
 - Loaded custom web fonts (Inter, Space Grotesk, JetBrains Mono) for improved documentation typography.
+- Added documentation website link (`wp-react.js.org`) to README, `package.json` homepage, and GitHub repository About section.
 
 ### CI/CD
 - Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.

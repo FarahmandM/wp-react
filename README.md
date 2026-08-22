@@ -8,6 +8,10 @@
 
 > A modern, type-safe React toolkit for building applications powered by the WordPress REST and GraphQL APIs.
 
+📖 **[Full Documentation → wp-react.js.org](https://wp-react.js.org)**
+
+---
+
 `wp-react` is a hook-driven React integration for WordPress. It handles authentication (JWT/OAuth), data fetching, media, menus, and secure HTML rendering, with deep integration into React Query and optional OpenTelemetry tracing.
 
 ---

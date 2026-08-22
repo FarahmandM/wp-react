@@ -2,6 +2,16 @@
     "name": "wp-react",
     "version": "1.0.9",
     "description": "A modern, type-safe React toolkit for headless WordPress with REST and GraphQL support.",
+    "author": "Farahmand Moslemi",
+    "license": "MIT",
+    "homepage": "https://wp-react.js.org",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FarahmandM/wp-react.git"
+    },
+    "bugs": {
+        "url": "https://github.com/FarahmandM/wp-react/issues"
+    },
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -35,10 +45,6 @@
         "cli": "ts-node src/cli/index.ts",
         "clean": "rm -rf ./dist ./coverage"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/FarahmandM/wp-react.git"
-    },
     "keywords": [
         "wp-react",
         "react",
@@ -57,12 +63,6 @@
         "react-query",
         "cli"
     ],
-    "author": "Farahmand Moslemi",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/FarahmandM/wp-react/issues"
-    },
-    "homepage": "https://github.com/FarahmandM/wp-react#readme",
     "peerDependencies": {
         "@tanstack/react-query": "^5.0.0",
         "react": "^18.0.0 || ^19.0.0",
