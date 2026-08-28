@@ -98,7 +98,7 @@
         "prettier": "^3.9.6",
         "react": "^19.0.0",
         "react-dom": "^19.2.8",
-        "rollup": "^4.43.0",
+        "rollup": "^4.63.0",
         "rollup-plugin-typescript-paths": "^1.5.0",
         "ts-jest": "^29.3.4",
         "ts-node": "^10.9.2",
