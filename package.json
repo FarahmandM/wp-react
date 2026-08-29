@@ -64,7 +64,7 @@
         "cli"
     ],
     "peerDependencies": {
-        "@tanstack/react-query": "^5.0.0",
+        "@tanstack/react-query": "^5.102.4",
         "react": "^18.0.0 || ^19.0.0",
         "react-dom": "^18.0.0 || ^19.0.0"
     },
@@ -111,7 +111,7 @@
     "dependencies": {
         "@opentelemetry/api": "^1.9.0",
         "@opentelemetry/sdk-trace-web": "^2.10.0",
-        "@tanstack/react-query": "^5.0.0",
+        "@tanstack/react-query": "^5.102.4",
         "@tanstack/react-query-devtools": "^5.101.4",
         "@types/inquirer": "^9.0.8",
         "axios": "^1.19.0",
