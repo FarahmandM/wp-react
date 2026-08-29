@@ -41,6 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `@types/react-dom` to 19.2.5.
 - Upgraded `@rollup/plugin-commonjs` to v29 (tested build compatibility locally).
 - Held `eslint` at 9.x, `@eslint/js` at 9.x, and `typescript` at 5.9.x due to ecosystem incompatibility (`eslint-plugin-react` and `@typescript-eslint` do not yet support ESLint 10 / TypeScript 7).
+- Upgraded `@tanstack/react-query` to 5.102.4.
+- Upgraded `dotenv` to v17, `open` to v11, and `@testing-library/jest-dom` to v7.
+- Aligned `@types/node` to v24 to match the project's Node runtime.
 
 ## [1.0.9] - 2026-08-14
 ### Security
