@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configured CodeQL to scan both TypeScript source code and GitHub Actions workflows for vulnerabilities.
 - Upgraded CodeQL GitHub Actions from `v3` to `v4` to resolve Node 20 deprecation warnings and prepare for v3 retirement.
 - Configured Dependabot to only monitor the root `package.json` to prevent conflicts with the documentation site.
+- Configured Dependabot to ignore `eslint@10.x`, `@eslint/js@10.x`, and `typescript@7.x` until the broader ecosystem supports them.
 
 ### Dependencies
 - Synced `@typescript-eslint/parser` to `^8.67.0` to match `eslint-plugin` and resolve peer dependency conflicts.
@@ -36,6 +37,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Resolved `brace-expansion` DoS advisory by re-resolving the lockfile to patched versions (`1.1.16+` / `5.0.7+`).
 - Upgraded `prettier` to 3.9.6, `axios` to 1.19.0, `@tanstack/react-query-devtools` to 5.101.4.
 - Held `typescript` at 5.9.x and `eslint` at 9.x due to ecosystem compatibility (`@typescript-eslint` and `eslint-plugin-react` do not yet support TS 7 / ESLint 10).
+- Upgraded `rollup` to 4.63.0 
+- Upgraded `@types/react-dom` to 19.2.5.
+- Upgraded `@rollup/plugin-commonjs` to v29 (tested build compatibility locally).
+- Held `eslint` at 9.x, `@eslint/js` at 9.x, and `typescript` at 5.9.x due to ecosystem incompatibility (`eslint-plugin-react` and `@typescript-eslint` do not yet support ESLint 10 / TypeScript 7).
 
 ## [1.0.9] - 2026-08-14
 ### Security
