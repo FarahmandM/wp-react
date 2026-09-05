@@ -7,43 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Launched documentation site powered by Docusaurus, available at `wp-react.js.org`.
+- Launched documentation site powered by Docusaurus, live at `wp-react.js.org`.
 - Added GitHub Pages workflow to automatically build and deploy the docs on push to `master`.
 - Added trademark disclaimer clarifying wp-react is not affiliated with WordPress Foundation or Meta Platforms, Inc.
-- Added Google Search Console verification.
-- Added Bing Webmaster Tools verification via XML file to bypass strict HTML parsing.
-- Added SEO and social meta tags (Open Graph, Twitter Card, `theme-color`, `author`).
-- Added an "About" page (`/about`) introducing the project creator's background across CMS and frontend ecosystems.
+- Added Google Search Console and Bing Webmaster Tools verification.
+- Added comprehensive SEO, Open Graph, and Twitter Card meta tags.
+- Added an "About" page (`/about`) detailing the creator's background across CMS and frontend ecosystems.
+- Added `homepage` field to `package.json` and a prominent docs link in the README.
 
 ### Changed
 - Refined package description to accurately reflect the library as a "type-safe" toolkit.
-- Switched documentation site `baseUrl` to root (`/`) to serve from the `wp-react.js.org` custom domain.
 - Rebranded documentation theme colors to match the wp-react logo (WordPress blue / React cyan).
 - Loaded custom web fonts (Inter, Space Grotesk, JetBrains Mono) for improved documentation typography.
-- Added documentation website link (`wp-react.js.org`) to README, `package.json` homepage, and GitHub repository About section.
+- Configured Dependabot to ignore the `docs/` directory and hold back on ESLint 10 / TypeScript 7 due to ecosystem incompatibilities.
+
+### Fixed
+- Updated `jest.config.ts` to use Node 22+ compliant JSON imports (`with { type: 'json' }`) to resolve parsing errors in newer Node runtimes.
 
 ### CI/CD
-- Updated GitHub Actions to `v7` to resolve Node 20 deprecation warnings.
+- Updated GitHub Actions to `v7` and CodeQL to `v4` to resolve Node 20 deprecation warnings.
 - Configured CodeQL to scan both TypeScript source code and GitHub Actions workflows for vulnerabilities.
-- Upgraded CodeQL GitHub Actions from `v3` to `v4` to resolve Node 20 deprecation warnings and prepare for v3 retirement.
 - Configured Dependabot to only monitor the root `package.json` to prevent conflicts with the documentation site.
 - Configured Dependabot to ignore `eslint@10.x`, `@eslint/js@10.x`, and `typescript@7.x` until the broader ecosystem supports them.
 
 ### Dependencies
-- Synced `@typescript-eslint/parser` to `^8.67.0` to match `eslint-plugin` and resolve peer dependency conflicts.
-- Upgraded `inquirer` to `^14.0.2` and `@rollup/plugin-alias` to `6.0.0`.
-- Upgraded `@opentelemetry/sdk-trace-web` to `2.10.0`.
-- Upgraded `react-dom` and `@types/react-dom` to the latest `19.2.x` patch releases.
-- Resolved `brace-expansion` DoS advisory by re-resolving the lockfile to patched versions (`1.1.16+` / `5.0.7+`).
-- Upgraded `prettier` to 3.9.6, `axios` to 1.19.0, `@tanstack/react-query-devtools` to 5.101.4.
-- Held `typescript` at 5.9.x and `eslint` at 9.x due to ecosystem compatibility (`@typescript-eslint` and `eslint-plugin-react` do not yet support TS 7 / ESLint 10).
-- Upgraded `rollup` to 4.63.0 
-- Upgraded `@types/react-dom` to 19.2.5.
-- Upgraded `@rollup/plugin-commonjs` to v29 (tested build compatibility locally).
-- Held `eslint` at 9.x, `@eslint/js` at 9.x, and `typescript` at 5.9.x due to ecosystem incompatibility (`eslint-plugin-react` and `@typescript-eslint` do not yet support ESLint 10 / TypeScript 7).
-- Upgraded `@tanstack/react-query` to 5.102.4.
-- Upgraded `dotenv` to v17, `open` to v11, and `@testing-library/jest-dom` to v7.
-- Aligned `@types/node` to v24 to match the project's Node runtime.
+- Synced `@typescript-eslint/parser` and `eslint-plugin` to 8.69.0.
+- Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
+- Upgraded `@tanstack/react-query` to 5.102.4 and devtools to 5.102.8.
+- Upgraded `@opentelemetry/sdk-trace-web` to 2.11.0, `dotenv` to v17, and `open` to v11.
+- Upgraded `@rollup/plugin-commonjs` to v29 and `rollup` to 4.63.0.
+- Upgraded `prettier` to 3.9.6, `axios` to 1.19.0, and `@testing-library/jest-dom` to v7.
+- Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
+- Aligned `@types/node` to v24 and `@types/react-dom` to 19.2.5.
 
 ## [1.0.9] - 2026-08-14
 ### Security
