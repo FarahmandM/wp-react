@@ -76,7 +76,7 @@
         "@rollup/plugin-node-resolve": "^16.0.1",
         "@rollup/plugin-typescript": "^12.1.2",
         "@testing-library/jest-dom": "^7.0.1",
-        "@testing-library/react": "^16.3.2",
+        "@testing-library/react": "^16.3.3",
         "@types/express": "^5.0.3",
         "@types/inquirer": "^9.0.8",
         "@types/jest": "^30.0.0",
