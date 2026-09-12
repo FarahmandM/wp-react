@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configured Dependabot to ignore `eslint@10.x`, `@eslint/js@10.x`, and `typescript@7.x` until the broader ecosystem supports them.
 
 ### Dependencies
-- Synced `@typescript-eslint/parser` and `eslint-plugin` to 8.69.0.
+- Synced `@typescript-eslint/parser` and `eslint-plugin` to 8.70.0.
 - Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
 - Upgraded `@tanstack/react-query` to 5.102.4 and devtools to 5.102.8.
 - Upgraded `@opentelemetry/sdk-trace-web` to 2.11.0, `dotenv` to v17, and `open` to v11.
@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `prettier` to 3.9.6, `axios` to 1.19.0, and `@testing-library/jest-dom` to v7.
 - Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
 - Aligned `@types/node` to v24 and `@types/react-dom` to 19.2.5.
+- Upgraded `jest-environment-jsdom` to 30.5.1 and `@testing-library/react` to 16.3.3.
 
 ## [1.0.9] - 2026-08-14
 ### Security
