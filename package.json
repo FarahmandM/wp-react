@@ -95,7 +95,7 @@
         "jest": "^30.5.1",
         "jest-environment-jsdom": "^30.5.1",
         "open": "^11.0.1",
-        "prettier": "^3.9.6",
+        "prettier": "^3.9.8",
         "react": "^19.3.0",
         "react-dom": "^19.3.0",
         "rollup": "^4.63.3",
