@@ -1,14 +1,14 @@
 import type { Config } from 'jest';
 import { pathsToModuleNameMapper } from 'ts-jest';
-//import { compilerOptions } from './tsconfig.json' with { type: 'json' };
 import tsconfig from './tsconfig.json' with { type: 'json' };
+
 const { compilerOptions } = tsconfig;
 
 const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/src/'
+    prefix: '<rootDir>/'
   }),
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {

@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src",
         "target": "ES2020",
         "module": "ESNext",
         "moduleResolution": "Bundler",
@@ -18,12 +17,13 @@
         "sourceMap": true,
         "incremental": true,
         "paths": {
-            "@api/*": ["api/*"],
-            "@components/*": ["components/*"],
-            "@hooks/*": ["hooks/*"],
-            "@utils/*": ["utils/*"],
-            "@models/*": ["types/*"],
-            "@core/*": ["core/*"]
+            "@/*": ["./src/*"],
+            "@api/*": ["./src/api/*"],
+            "@components/*": ["./src/components/*"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@utils/*": ["./src/utils/*"],
+            "@models/*": ["./src/types/*"],
+            "@core/*": ["./src/core/*"]
         }
     },
     "include": [
