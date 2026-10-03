@@ -64,7 +64,6 @@
         "cli"
     ],
     "peerDependencies": {
-        "@tanstack/react-query": "^5.102.4",
         "react": "^18.0.0 || ^19.0.0",
         "react-dom": "^18.0.0 || ^19.0.0"
     },
@@ -83,8 +82,8 @@
         "@types/node": "^24.13.3",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
-        "@typescript-eslint/eslint-plugin": "^8.70.1",
-        "@typescript-eslint/parser": "^8.70.1",
+        "@typescript-eslint/eslint-plugin": "^8.71.0",
+        "@typescript-eslint/parser": "^8.71.0",
         "dotenv": "^17.4.2",
         "eslint": "^9.39.4",
         "eslint-config-prettier": "^10.1.5",
@@ -93,12 +92,12 @@
         "express": "^5.1.0",
         "inquirer": "^14.2.2",
         "jest": "^30.5.2",
-        "jest-environment-jsdom": "^30.5.1",
+        "jest-environment-jsdom": "^30.5.2",
         "open": "^11.0.1",
         "prettier": "^3.9.8",
         "react": "^19.3.0",
         "react-dom": "^19.3.0",
-        "rollup": "^4.63.4",
+        "rollup": "^4.63.5",
         "rollup-plugin-typescript-paths": "^1.5.0",
         "ts-jest": "^29.3.4",
         "ts-node": "^10.9.2",
@@ -106,12 +105,12 @@
         "tsconfig-paths": "^4.2.0",
         "tslib": "^2.8.1",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.61.0"
+        "typescript-eslint": "^8.71.0"
     },
     "dependencies": {
         "@opentelemetry/api": "^1.9.0",
         "@opentelemetry/sdk-trace-web": "^2.11.0",
-        "@tanstack/react-query": "^5.102.4",
+        "@tanstack/react-query": "^5.104.0",
         "@tanstack/react-query-devtools": "^5.102.8",
         "@types/inquirer": "^9.0.8",
         "axios": "^1.20.0",
