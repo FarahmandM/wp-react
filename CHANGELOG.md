@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `homepage` field to `package.json` and a prominent docs link in the README.
 
 ### Changed
+- Upgraded development runtime to Node 26 in preparation for LTS release.
+- Updated GitHub Actions workflows to use Node 26.
 - Refined package description to accurately reflect the library as a "type-safe" toolkit.
 - Rebranded documentation theme colors to match the wp-react logo (WordPress blue / React cyan).
 - Loaded custom web fonts (Inter, Space Grotesk, JetBrains Mono) for improved documentation typography.
@@ -34,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Dependencies
 - Synced `@typescript-eslint/parser`, `eslint-plugin`, and `typescript-eslint` to 8.71.1.
 - Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
-- Aligned `@types/node` to v24.
+- Aligned `@types/node` to v26 to match the updated runtime.
 - Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
 - Upgraded `@tanstack/react-query` to 5.104.0 and `devtools` to 5.102.8.
 - Upgraded `@opentelemetry/sdk-trace-web` to 2.11.0, and `open` to v11.
