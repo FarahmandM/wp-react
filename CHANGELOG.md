@@ -38,19 +38,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
 - Aligned `@types/node` to v26 to match the updated runtime.
 - Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
-- Upgraded `@tanstack/react-query` to 5.104.0 and `devtools` to 5.102.8.
+- Upgraded `devtools` to 5.102.8.
 - Upgraded `open` to 11.0.4.
 - Upgraded `@rollup/plugin-commonjs` to v29.
 - Upgraded `@testing-library/jest-dom` to v7.
 - Upgraded `jest-environment-jsdom` to 30.5.2 and `@testing-library/react` to 16.3.3.
 - Upgraded `axios` to 1.20.0.
-- Upgraded `inquirer` to 14.2.2, `tsc-alias` to 1.9.5, and `rollup` to 4.63.4.
+- Upgraded `inquirer` to 14.2.2 and `rollup` to 4.63.4.
 - Upgraded `react`, `@types/react` and `@types/react-dom` to latest, keeping `react-dom` aligned.
 - Upgraded `typescript` to 6.0.3 and modernized `tsconfig.json` paths to resolve deprecation warnings.
 - Upgraded `dotenv` to 18.0.6"
 - Upgraded `@opentelemetry/sdk-trace-web` to 2.12.0
-- Upgraded `ts-jest` to 29.4.14
+- Upgraded `ts-jest` to 29.4.15
 - Upgraded `prettier` to 3.9.10"
+- Upgraded `@tanstack/react-query` to 5.104.5.
+- Upgraded `tsc-alias` to 1.9.8.
+- Patched `follow-redirects` to 1.16.1 in both root and docs.
+- Held `@opentelemetry/api` at 1.9.1 due to SDK peer dependency constraint.
 
 
 ## [1.0.9] - 2026-08-14
