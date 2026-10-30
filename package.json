@@ -98,7 +98,7 @@
         "jest-environment-jsdom": "^30.5.2",
         "open": "^11.0.4",
         "prettier": "^3.9.10",
-        "react": "^19.3.0",
+        "react": "^19.3.1",
         "react-dom": "^19.3.0",
         "rollup": "^4.63.5",
         "rollup-plugin-typescript-paths": "^1.5.0",
