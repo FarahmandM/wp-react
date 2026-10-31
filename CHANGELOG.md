@@ -34,18 +34,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configured Dependabot to ignore `eslint@10.x`, `@eslint/js@10.x`, and `typescript@7.x` until the broader ecosystem supports them.
 
 ### Dependencies
-- Synced `@typescript-eslint/parser`, `eslint-plugin`, and `typescript-eslint` to 8.71.2.
-- Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
 - Aligned `@types/node` to v26 to match the updated runtime.
+- Held `@opentelemetry/api` at 1.9.1 due to SDK peer dependency constraint.
+- Patched `follow-redirects` to 1.16.1 in both root and docs.
+- Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
+- Synced `@typescript-eslint/parser`, `eslint-plugin`, and `typescript-eslint` to 8.72.1.
 - Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
 - Upgraded `devtools` to 5.102.8.
 - Upgraded `open` to 11.0.4.
 - Upgraded `@rollup/plugin-commonjs` to v29.
 - Upgraded `@testing-library/jest-dom` to v7.
 - Upgraded `jest-environment-jsdom` to 30.5.2 and `@testing-library/react` to 16.3.3.
-- Upgraded `axios` to 1.20.0.
-- Upgraded `inquirer` to 14.2.2 and `rollup` to 4.63.4.
-- Upgraded `react`, `@types/react` and `@types/react-dom` to latest, keeping `react-dom` aligned.
+- Upgraded `rollup` to 4.63.4.
 - Upgraded `typescript` to 6.0.3 and modernized `tsconfig.json` paths to resolve deprecation warnings.
 - Upgraded `dotenv` to 18.0.6"
 - Upgraded `@opentelemetry/sdk-trace-web` to 2.12.0
@@ -53,8 +53,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `prettier` to 3.9.10"
 - Upgraded `@tanstack/react-query` to 5.104.5.
 - Upgraded `tsc-alias` to 1.9.8.
-- Patched `follow-redirects` to 1.16.1 in both root and docs.
-- Held `@opentelemetry/api` at 1.9.1 due to SDK peer dependency constraint.
+- Upgraded `axios` to 1.21.0.
+- Upgraded `react` and `react-dom` to 19.3.1, keeping `@types/react` and `@types/react-dom` aligned.
+- Upgraded `inquirer` to 14.2.5.
 
 
 ## [1.0.9] - 2026-08-14
