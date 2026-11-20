@@ -117,7 +117,7 @@
         "@tanstack/react-query-devtools": "^5.105.3",
         "@types/inquirer": "^9.0.8",
         "axios": "^1.21.1",
-        "dompurify": "^3.4.17",
+        "dompurify": "^3.4.18",
         "follow-redirects": "^1.16.3",
         "graphql-request": "^7.1.2"
     },
