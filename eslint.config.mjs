@@ -4,6 +4,20 @@ import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 
 export default tseslint.config(
+  // Global ignores — must be an object containing ONLY `ignores`
+  {
+    ignores: [
+      "dist/**",
+      "coverage/**",
+      "examples/**",
+      "**/node_modules/**",
+      "**/.rollup.cache*/**",
+      "**/.docusaurus/**",
+      "**/build/**",
+      "docs/**",
+      "eslint.config.mjs",
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -29,14 +43,5 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-empty-object-type": "off",
     },
-  },
-  {
-    ignores: [
-      "dist/",
-      "node_modules/",
-      "coverage/",
-      "examples/",
-      "eslint.config.mjs"
-    ],
   }
 );

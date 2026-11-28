@@ -37,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Held `@opentelemetry/api` at 1.9.1 due to SDK peer dependency constraint.
 - Patched `follow-redirects` to 1.16.3 in both root and docs.
 - Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
-- Synced `@typescript-eslint/parser`, `eslint-plugin`, and `typescript-eslint` to 8.74.0.
+- Removed redundant direct devDependencies on `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin`; both are provided by `typescript-eslint`.
+- Upgraded `typescript-eslint` to 8.74.0.
 - Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
 - Upgraded `devtools` to 5.102.8.
 - Upgraded `open` to 11.0.4.
