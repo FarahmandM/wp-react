@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
 - Removed redundant direct devDependencies on `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin`; both are provided by `typescript-eslint`.
 - Upgraded `typescript-eslint` to 8.74.0.
-- Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
+- Upgraded `jest` and `@types/jest` to the latest versions.
 - Upgraded `devtools` to 5.102.8.
 - Upgraded `open` to 11.0.4.
 - Upgraded `@rollup/plugin-commonjs` to v29.
@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `prettier` to 3.9.10.
 - Upgraded `@tanstack/react-query` to 5.108.4.
 - Upgraded `@tanstack/react-query-devtools` to 5.108.4.
-- Upgraded `tsc-alias` to 1.9.10.
+- Upgraded `tsc-alias` to 1.9.11.
 - Upgraded `axios` to 1.21.1.
 - Upgraded `react` and `react-dom` to 19.3.1, keeping `@types/react` and `@types/react-dom` aligned.
 - Upgraded `inquirer` to 14.2.5.
