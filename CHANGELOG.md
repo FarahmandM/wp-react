@@ -33,14 +33,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configured Dependabot to only monitor the root `package.json` to prevent conflicts with the documentation site.
 - Configured Dependabot to ignore `eslint@10.x`, `@eslint/js@10.x`, and `typescript@7.x` until the broader ecosystem supports them.
 
-### Security
-- Upgraded `dompurify` to 3.4.18 to resolve recent sanitizer bypass advisories.
-
 ### Dependencies
 - Held `@opentelemetry/api` at 1.9.1 due to SDK peer dependency constraint.
 - Patched `follow-redirects` to 1.16.3 in both root and docs.
 - Resolved `brace-expansion` DoS advisory via lockfile re-resolution.
-- Synced `@typescript-eslint/parser`, `eslint-plugin`, and `typescript-eslint` to 8.72.2.
+- Synced `@typescript-eslint/parser`, `eslint-plugin`, and `typescript-eslint` to 8.74.0.
 - Upgraded `jest` and `@types/jest` to the latest versions, alongside `tsc-alias` to 1.9.3.
 - Upgraded `devtools` to 5.102.8.
 - Upgraded `open` to 11.0.4.
@@ -53,9 +50,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `@opentelemetry/sdk-trace-web` to 2.12.0.
 - Upgraded `ts-jest` to 29.4.15.
 - Upgraded `prettier` to 3.9.10.
-- Upgraded `@tanstack/react-query` to 5.108.0.
-- Upgraded `@tanstack/react-query-devtools` to 5.108.0.
-- Upgraded `tsc-alias` to 1.9.8.
+- Upgraded `@tanstack/react-query` to 5.108.4.
+- Upgraded `@tanstack/react-query-devtools` to 5.108.4.
+- Upgraded `tsc-alias` to 1.9.10.
 - Upgraded `axios` to 1.21.1.
 - Upgraded `react` and `react-dom` to 19.3.1, keeping `@types/react` and `@types/react-dom` aligned.
 - Upgraded `inquirer` to 14.2.5.
@@ -64,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `express` to 5.3.0.
 - Upgraded `tslib` to 2.9.1.
 - Upgraded `@rollup/plugin-alias` to 6.0.1.
+- Upgraded `dompurify` to 3.5.0.
 
 
 ## [1.0.9] - 2026-08-14
